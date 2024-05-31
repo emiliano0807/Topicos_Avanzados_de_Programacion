@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, sans-serif;
+    min-width: 95vw;
+    min-height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#TaskForm {
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.7);
+    border-radius: 7px;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 300px;
+    margin-bottom: 20px;
+
+}
+#TaskList {
+    list-style-type: none;
+    padding: 0;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.7);
+    border-radius: 7px;
+    padding: 1rem;
+    width: 300px;
+    margin-bottom: 20px;
+    color: red;
+}
+#TaskList li {
+    margin: 5px 0;
+}

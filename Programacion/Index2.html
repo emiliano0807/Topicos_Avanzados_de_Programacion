@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/Veterinaria.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro de Mascotas</title>
+</head>
+<body class="container-fluid . d-flex . align-items-center . flex-column ">
+
+<h2>Registro de Mascotas</h2>
+
+<form class=". col-4 flex-column align-items-center" id="registroForm" >
+    <label for="nombreDueño">Nombre del dueño:</label>
+    <input type="text" id="nombreDueño" name="nombreDueño"><br>
+
+    <label for="nombreMascota">Nombre de la mascota:</label>
+    <input type="text" id="nombreMascota" name="nombreMascota"><br>
+
+    <label for="sintomas">Síntomas (separados por coma):</label>
+    <textarea id="sintomas" rows="4" name="sintomas"></textarea><br>
+
+    <label for="contacto">Número de contacto:</label>
+    <input type="text" id="contacto" name="contacto"><br>
+
+    <label for="imagenMascota">Seleccionar imagen de la mascota:</label>
+    <input type="file" id="imagenMascota" name="imagenMascota"><br>
+
+    <button class="btn btn-success mt-3 col-9" type="button" onclick="mostrarDatos()">Mostrar Datos</button>
+</form>
+
+<div id="datosMascota"></div>
+<img id="imagenMascotaPrev" src="" alt="Imagen de la mascota" style="display: none;">
+
+<script>
+function mostrarDatos() {
+    var nombreDueño = document.getElementById("nombreDueño").value;
+    var nombreMascota = document.getElementById("nombreMascota").value;
+    var sintomas = document.getElementById("sintomas").value.split(",");
+    var contacto = document.getElementById("contacto").value;
+    var imagenMascota = document.getElementById("imagenMascota").files[0];
+
+    var datosMascota = document.getElementById("datosMascota");
+    datosMascota.innerHTML = "<strong>Nombre del dueño:</strong> " + nombreDueño + "<br>" +
+                              "<strong>Nombre de la mascota:</strong> " + nombreMascota + "<br>" +
+                              "<strong>Síntomas:</strong> " + sintomas.join(", ") + "<br>" +
+                              "<strong>Número de contacto:</strong> " + contacto;
+
+    var imagenMascotaPrev = document.getElementById("imagenMascotaPrev");
+    if (imagenMascota) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            imagenMascotaPrev.src = e.target.result;
+            imagenMascotaPrev.style.display = "inline";
+        };
+        reader.readAsDataURL(imagenMascota);
+    }
+}
+</script>
+
+</body>
+</html>
